@@ -1,0 +1,83 @@
+Everyday Git
+
+- git status
+
+  - Use it early, use it often
+
+  - anti-pattern: git commit -a
+
+- git fetch + git merge
+
+  - git pull is dangerous
+
+- git diff [--cached]
+
+  - git diff <branch1> <branch2>
+
+  - git diff -w
+
+- git show [<reference>]
+
+- git stash
+
+  - git stash list
+
+  - git stash pop
+
+  - git stash apply
+
+- git merge --no-commit
+
+  - try out the merge before committing it to history
+
+- git <some_command> -p
+
+  - git add -p
+
+  - git log -p
+
+  - git stash -p
+
+  - git reset -p
+
+- git push -u
+
+
+Troubleshooting
+
+- git commit --amend [--no-edit]
+
+  - always force-push immediately, if you amended a commit that was
+    already pushed
+
+- git reflog
+
+- git branch --contains <reference>
+
+- git reset --hard <reference>
+
+  - git reset --hard origin/master
+
+  - git reset --hard <previous_commit>
+
+- git rebase -i
+
+  - I always use -i
+
+  - slice & dice
+
+  - abort by clearing content from the editor
+
+- git rebase -i <first_commit_in_sequence>^ --onto <branch>
+
+  - another anti-pattern: squashing a branch into a single commit
+
+- git bisect
+
+
+Github
+
+- ?w=1
+
+- curl -u "jbradberry" -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"ref":"refs/heads/fix-force-pushed-commit", "sha":"cb012ad7dc7579f19b59bdc1f3f7bfaeba74405c"}' https://api.github.com/repos/nasft/craftcarejoy/git/refs
+
