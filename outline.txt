@@ -51,14 +51,14 @@ Everyday Git
 
 Troubleshooting
 
+- git branch --contains <reference>
+
 - git commit --amend [--no-edit]
 
   - always force-push immediately, if you amended a commit that was
     already pushed
 
 - git reflog
-
-- git branch --contains <reference>
 
 - git reset --hard <reference>
 
@@ -86,4 +86,3 @@ Github
 - ?w=1
 
 - curl -u "jbradberry" -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"ref":"refs/heads/fix-force-pushed-commit", "sha":"cb012ad7dc7579f19b59bdc1f3f7bfaeba74405c"}' https://api.github.com/repos/nasft/craftcarejoy/git/refs
-
