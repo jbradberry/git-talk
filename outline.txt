@@ -26,6 +26,8 @@ Everyday Git
 
   - git stash apply
 
+  - git stash drop
+
 - git merge --no-commit
 
   - try out the merge before committing it to history
@@ -41,6 +43,10 @@ Everyday Git
   - git reset -p
 
 - git push -u
+
+- git branch <some_name>
+
+  - set aside a "copy" of a branch while you do something destructive
 
 
 Troubleshooting
