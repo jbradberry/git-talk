@@ -48,6 +48,8 @@ Everyday Git
 
   - set aside a "copy" of a branch while you do something destructive
 
+- git remote -v
+
 
 Troubleshooting
 
