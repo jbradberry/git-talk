@@ -51,8 +51,40 @@
         </section>
 
         <section>
-          Synchronizing with the remote repo
+          <section>
+            How do I synchronize my branch with the remote branch?
+            <p class="fragment strike">git pull</p>
+          </section>
+          <section>
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ <mark>git fetch --all</mark>
+Fetching origin
+remote: Counting objects: 12, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 12 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (12/12), done.
+From github.com:nasft/craftcarejoy
+   d6c10af..08d4ce7  long-term -> origin/long-term
+            </code></pre>
+
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ <mark>git status</mark>
+On branch long-term
+Your branch is behind 'origin/long-term' by 1 commit, and can be
+  fast-forwarded.
+  (use "git pull" to update your local branch)
+            </code></pre>
+
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ <mark>git merge origin/long-term</mark>
+Updating d6c10af..08d4ce7
+Fast-forward
+ apps/sf_registration/__init__.py                       |  4 ++--
+ ...
+            </code></pre>
+          </section>
         </section>
+
         <section>
           git diff
         </section>
