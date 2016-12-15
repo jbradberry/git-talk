@@ -153,9 +153,27 @@ Fast-forward
             git reset --hard
           </section>
         </section>
+
         <section>
-          git rebase
+          All your (re)base are belong to us
+          <p class="fragment">git rebase -i</p>
+          <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ <mark>git rebase -i origin/other-branch</mark>
+          </code></pre>
+          <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+<mark>File Edit Options Buffers Tools Help</mark>
+pick 8332a6f Commit message 1
+pick d906a11 Commit message 2
+pick 0d47ffb Commit message 3
+...
+          </code></pre>
+          <aside class="notes">
+            If you give rebase the -i or interactive flag, it opens up
+            an editor and gives you a list of the commits that will be
+            involved in the rebase.
+          </aside>
         </section>
+
         <section>
           Splicing branches
         </section>
