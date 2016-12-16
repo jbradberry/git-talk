@@ -180,9 +180,18 @@ pick 0d47ffb Commit message 3
         <section>
           Where did it all go wrong...?
         </section>
+
         <section>
           What do you mean, no one has the commit?!
+          <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ curl -u "jbradberry" -i -H "Accept: application/json"
+ -H "Content-Type: application/json" -X POST
+ -d '{"ref":"refs/heads/fix-force-pushed-commit",
+ "sha":"cb012ad7dc7579f19b59bdc1f3f7bfaeba74405c"}'
+ https://api.github.com/repos/nasft/craftcarejoy/git/refs
+          </code></pre>
         </section>
+
       </div>
     </div>
 
