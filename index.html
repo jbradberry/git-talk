@@ -26,27 +26,36 @@
       <div class="slides">
         <section>
           <h1>Git Tips & Tricks</h1>
+
+          <aside class="notes">
+            <ul>
+              <li>will be covering commands ranging from basic to advanced</li>
+              <li>hope that everyone takes away at least one new technique</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h2>Everyday Git</h2>
+
+          <aside class="notes">
+            <ul>
+              <li>start with the basics</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           git status
 
           <aside class="notes">
-            Of all of the things in this talk, this is the one that I
-            feel confident everyone here who works with git already
-            knows.  It is extremely basic.  But it is important,
-            perhaps because of that very basicness.  I consider it so
-            useful and important, I use it probably close to every
-            other git command.  It tells you what branch you are on,
-            and if it is in sync with its upstream.  It shows you what
-            files are in the index, what files have changes, and what
-            files aren't even being tracked at all yet.  It will even
-            show you if you have some other git command partially
-            completed, such as a merge or a rebase.
+            <ul>
+              <li>confident everyone probably already knows this</li>
+              <li>extremely basic</li>
+              <li>useful and important because of that basicness</li>
+              <li>I use it close to every other git command I run</li>
+              <li>running and paying attention to what it tells you can save you from mistakes</li>
+            </ul>
           </aside>
         </section>
 
@@ -54,7 +63,17 @@
           <section>
             How do I synchronize my branch with the remote branch?
             <p class="fragment strike">git pull</p>
+
+            <aside class="notes">
+              <ul>
+                <li>git pull is dangerous</li>
+                <li>accesses your remote over the network, and does a merge as a side effect</li>
+                <li>the remote branch could have incompatible work on it</li>
+                <li>or there could be changes to history that cause a merge commit</li>
+              </ul>
+            </aside>
           </section>
+
           <section>
             <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
 $ <mark>git fetch --all</mark>
@@ -82,17 +101,47 @@ Fast-forward
  apps/sf_registration/__init__.py                       |  4 ++--
  ...
             </code></pre>
+
+            <aside class="notes">
+              <ul>
+                <li>this operation can be broken up into multiple commands</li>
+                <li>fetch --all accesses all of your remotes</li>
+                <li>status to check to see if we are good to go</li>
+                <li>opportunity to issue other commands here (e.g. git diff)</li>
+                <li>merge remote into local when satisfied</li>
+              </ul>
+            </aside>
           </section>
         </section>
 
         <section>
           git diff
+
+          <aside class="notes">
+            <ul>
+              <li>not just for showing the changes to files in progress</li>
+              <li>--cached for showing changes that have been added to the index</li>
+              <li>use two references to compare them (e.g. branches)</li>
+              <li>use three dots to compare against the common ancestor</li>
+              <li>diff -w to eliminate whitespace from the emitted diff</li>
+              <li>github has an equivalent, ?w=1</li>
+            </ul>
+          </aside>
         </section>
+
         <section>
           git show
+
+          <aside class="notes">
+            <ul>
+              <li>like a single-commit diff</li>
+            </ul>
+          </aside>
         </section>
+
         <section>
           git stash
+
           <p class="fragment">git stash [save]</p>
           <p class="fragment">git stash list</p>
           <p class="fragment">git stash apply</p>
@@ -100,9 +149,11 @@ Fast-forward
           <p class="fragment">git stash drop</p>
           <p class="fragment">... and more</p>
         </section>
+
         <section>
           git merge --no-commit
         </section>
+
         <section>
           <section>
             Everything is better with patch!
@@ -126,9 +177,11 @@ Fast-forward
             git reset -p
           </section>
         </section>
+
         <section>
           git push -u
         </section>
+
         <section>
           git branch &lt;some_name&gt;
         </section>
@@ -136,12 +189,15 @@ Fast-forward
         <section>
           <h2>'git'ting into Trouble</h2>
         </section>
+
         <section>
           Did that change make it in to this branch...?
         </section>
+
         <section>
           Fixing the last commit
         </section>
+
         <section>
           <section>
           How do I get that back...?
@@ -156,6 +212,7 @@ Fast-forward
 
         <section>
           All your (re)base are belong to us
+
           <p class="fragment">git rebase -i</p>
           <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
 $ <mark>git rebase -i origin/other-branch</mark>
@@ -167,6 +224,7 @@ pick d906a11 Commit message 2
 pick 0d47ffb Commit message 3
 ...
           </code></pre>
+
           <aside class="notes">
             If you give rebase the -i or interactive flag, it opens up
             an editor and gives you a list of the commits that will be
