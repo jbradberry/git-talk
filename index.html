@@ -46,7 +46,7 @@
         </section>
 
         <section>
-          git status
+          <p>git status</p>
 
           <aside class="notes">
             <ul>
@@ -61,8 +61,9 @@
 
         <section>
           <section>
-            How do I synchronize my branch with the remote branch?
-            <p class="fragment strike">git pull</p>
+            <p>How do I synchronize my branch with the remote branch?</p>
+
+            <p class="fragment"><span class="fragment strike">git pull</span></p>
 
             <aside class="notes">
               <ul>
@@ -115,7 +116,13 @@ Fast-forward
         </section>
 
         <section>
-          git diff
+          <p>git diff</p>
+
+          <p class="fragment">git diff --cached</p>
+          <p class="fragment">git diff <em>branch1</em> <em>branch2</em></p>
+          <p class="fragment">git diff <em>branch1</em>...<em>branch2</em></p>
+          <p class="fragment">git diff -w</p>
+          <p class="fragment">github.com/username/repo/pull/1/files?w=1</p>
 
           <aside class="notes">
             <ul>
@@ -130,7 +137,7 @@ Fast-forward
         </section>
 
         <section>
-          git show
+          <p>git show <em>commit</em></p>
 
           <aside class="notes">
             <ul>
@@ -140,7 +147,7 @@ Fast-forward
         </section>
 
         <section>
-          git stash
+          <p>git stash</p>
 
           <p class="fragment">git stash [save]</p>
           <p class="fragment">git stash list</p>
@@ -151,39 +158,26 @@ Fast-forward
         </section>
 
         <section>
-          git merge --no-commit
+          <p>git merge --no-commit</p>
         </section>
 
         <section>
-          <section>
-            Everything is better with patch!
-          </section>
-          <section>
-            git add -p
-          </section>
-          <section>
-            git log -p
-          </section>
-          <section>
-            git stash -p
-          </section>
-          <section>
-            git stash list -p
-          </section>
-          <section>
-            git stash show -p
-          </section>
-          <section>
-            git reset -p
-          </section>
+          <p>Everything is better with patch!</p>
+
+          <p class="fragment">git add -p</p>
+          <p class="fragment">git log -p</p>
+          <p class="fragment">git stash -p</p>
+          <p class="fragment">git stash list -p</p>
+          <p class="fragment">git stash show -p</p>
+          <p class="fragment">git reset -p</p>
         </section>
 
         <section>
-          git push -u
+          <p>git push -u</p>
         </section>
 
         <section>
-          git branch &lt;some_name&gt;
+          <p>git branch <em>branch-name</em></p>
         </section>
 
         <section>
@@ -191,27 +185,23 @@ Fast-forward
         </section>
 
         <section>
-          Did that change make it in to this branch...?
+          <p>Did that change make it in to this branch...?</p>
+          <p class="fragment">git branch --contains <em>commit</em></p>
         </section>
 
         <section>
-          Fixing the last commit
+          <p>Fixing the last commit</p>
+          <p class="fragment">git commit --amend --no-edit</p>
         </section>
 
         <section>
-          <section>
-          How do I get that back...?
-          </section>
-          <section>
-            git reflog
-          </section>
-          <section>
-            git reset --hard
-          </section>
+          <p>How do I get that back...?</p>
+          <p class="fragment">git reflog</p>
+          <p class="fragment">git reset --hard</p>
         </section>
 
         <section>
-          All your (re)base are belong to us
+          <p>Rebasing</p>
 
           <p class="fragment">git rebase -i</p>
           <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
@@ -233,14 +223,15 @@ pick 0d47ffb Commit message 3
         </section>
 
         <section>
-          Splicing branches
-        </section>
-        <section>
-          Where did it all go wrong...?
+          <p>Splicing branches</p>
         </section>
 
         <section>
-          What do you mean, no one has the commit?!
+          <p>Where did it all go wrong...?</p>
+        </section>
+
+        <section>
+          <p>What do you mean, no one has the commit?!</p>
           <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
 $ curl -u "jbradberry" -i -H "Accept: application/json"
  -H "Content-Type: application/json" -X POST
