@@ -50,7 +50,7 @@
 
           <aside class="notes">
             <ul>
-              <li>confident everyone probably already knows this</li>
+              <li>everyone probably already knows this</li>
               <li>extremely basic</li>
               <li>useful and important because of that basicness</li>
               <li>I use it close to every other git command I run</li>
@@ -154,11 +154,22 @@ Fast-forward
           <p class="fragment">git stash apply</p>
           <p class="fragment">git stash pop</p>
           <p class="fragment">git stash drop</p>
-          <p class="fragment">... and more</p>
+
+          <aside class="notes">
+            <ul>
+              <li>sometimes it is necessary to set aside some wip to switch to another thing</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <p>git merge --no-commit</p>
+
+          <aside class="notes">
+            <ul>
+              <li>try out a merge, see how well it will work and cleanly it will apply</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -170,34 +181,92 @@ Fast-forward
           <p class="fragment">git stash list -p</p>
           <p class="fragment">git stash show -p</p>
           <p class="fragment">git reset -p</p>
+
+          <aside class="notes">
+            <ul>
+              <li>a variety of git commands take the patch flag</li>
+              <li>for commands that are a display function it shows the diffs</li>
+              <li>for commands that are an edit function it allows interactive buildup</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
-          <p>git push -u</p>
+          <p>git push -u <em>remote</em> <em>branch</em></p>
+
+          <aside class="notes">
+            <ul>
+              <li>easy way of getting local branches to track their remote version</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <p>git branch <em>branch-name</em></p>
+
+          <aside class="notes">
+            <ul>
+              <li>What the heck is this useful for?</li>
+              <li>allows you to set aside a backup copy of the current branch</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h2>'git'ting into Trouble</h2>
+
+          <p class="fragment">and back out again</p>
         </section>
 
         <section>
           <p>Did that change make it in to this branch...?</p>
           <p class="fragment">git branch --contains <em>commit</em></p>
+
+          <aside class="notes">
+            <ul>
+              <li>shows the set of branches that contains the reference</li>
+              <li>easy way to confirm that you did a merge</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <p>Fixing the last commit</p>
-          <p class="fragment">git commit --amend --no-edit</p>
+          <p class="fragment">git commit --amend [--no-edit]</p>
+
+          <aside class="notes">
+            <ul>
+              <li>the simplest of the history altering commands</li>
+              <li>always force-push immediately, if you amended a commit that was already pushed</li>
+              <li>the --no-edit flag allows you to keep the commit message you used</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <p>How do I get that back...?</p>
           <p class="fragment">git reflog</p>
-          <p class="fragment">git reset --hard</p>
+          <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+(crisp) jrb@caktus025:~/crisp$ git reflog
+444427c HEAD@{0}: commit: Create a basic lexer using RPLY
+5d69e5e HEAD@{1}: commit: Add the standard *~ and *.pyc to .gitignore
+16d4051 HEAD@{2}: commit: Fix typo of jitpolicy
+8902211 HEAD@{3}: commit: Updated information for Q1 2017 Ship-It Day
+          </code></pre>
+          <p class="fragment">git reset --hard <em>reflog-hash</em></p>
+          <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+(crisp) jrb@caktus025:~/crisp$ git reset --hard 16d4051
+HEAD is now at 16d4051 Fix typo of jitpolicy
+          </code></pre>
+
+          <aside class="notes">
+            <ul>
+              <li>when altering history, it is easy to wind up in a bad state</li>
+              <li>reflog gives you the history of changes to the repo that you have made</li>
+              <li>reset --hard changes the pointer of where you currently are</li>
+              <li>you can lose WIP changes with reset --hard</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -216,18 +285,46 @@ pick 0d47ffb Commit message 3
           </code></pre>
 
           <aside class="notes">
-            If you give rebase the -i or interactive flag, it opens up
-            an editor and gives you a list of the commits that will be
-            involved in the rebase.
+            <ul>
+              <li>there are commands greater in their range and destructive power, but this is the most powerful most devs are likely to use</li>
+              <li>the interactive flag opens up an editor and gives you a list of commits involved</li>
+              <li>good sanity check</li>
+              <li>allows you to slice and dice your branch, if you want to clean things up</li>
+              <li>bail out by removing everything from your editor's buffer</li>
+            </ul>
           </aside>
         </section>
 
         <section>
           <p>Splicing branches</p>
+
+          <p class="fragment">git rebase -i <em>commit_before_the_first</em> --onto <em>branch</em></p>
+          <p class="fragment">git rebase -i <em>first_commit</em>^ --onto <em>branch</em></p>
+
+          <aside class="notes">
+            <ul>
+              <li>extremely useful if you are on a project that requires a rebase workflow</li>
+              <li>lifts an entire sequence of commits, and transplants them onto some unrelated branch</li>
+              <li>it is something of an anti-pattern to squash your branch just to accommodate this workflow</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <p>Where did it all go wrong...?</p>
+
+          <p class="fragment">git bisect start</p>
+          <p class="fragment">git bisect bad</p>
+          <p class="fragment">git bisect good cb012ad7</p>
+
+          <aside class="notes">
+            <ul>
+              <li>you are on some project and a tricky bug comes up</li>
+              <li>specify the known bad and known good commits</li>
+              <li>will do a binary search, each time you check the commit and tell it whether it is bad or good</li>
+              <li>eventually, it will stop on the commit that brought in the bug</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -239,6 +336,13 @@ $ curl -u "jbradberry" -i -H "Accept: application/json"
  "sha":"cb012ad7dc7579f19b59bdc1f3f7bfaeba74405c"}'
  https://api.github.com/repos/nasft/craftcarejoy/git/refs
           </code></pre>
+
+          <aside class="notes">
+            <ul>
+              <li>reflog is useful, but what if no one has it because the operation was on github</li>
+              <li>github has an api</li>
+            </ul>
+          </aside>
         </section>
 
       </div>
