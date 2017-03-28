@@ -389,12 +389,15 @@ pick 0d47ffb Commit message 3
           <p>Splicing branches</p>
 
           <p class="fragment">git rebase -i <em>commit_before_the_first</em> --onto <em>branch</em></p>
-          <p class="fragment">git rebase -i <em>first_commit</em>^ --onto <em>branch</em></p>
+          <p class="fragment">git rebase -i $(git merge-base develop) --onto <em>branch</em></p>
+          <p class="fragment">git rebase -i --root --onto <em>branch</em></p>
 
           <aside class="notes">
             <ul>
               <li>extremely useful if you are on a project that requires a rebase workflow</li>
               <li>lifts an entire sequence of commits, and transplants them onto some unrelated branch</li>
+              <li>merge-base is a useful little command for just this purpose</li>
+              <li>newer versions of git provide a root flag to do this for you</li>
               <li>it is something of an anti-pattern to squash your branch just to accommodate this workflow</li>
             </ul>
           </aside>
