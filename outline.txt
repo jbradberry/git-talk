@@ -1,3 +1,28 @@
+TODO:
+
+- add log
+  - filter by author
+  - filter by begin or end date
+  - filter by file or path (with follow)
+  - filter by line content
+  - filter by regex content
+  - fuzzy times
+  - oneline
+  - stat
+  - graph,oneline,decorate
+
+- add merge-base
+
+- add shortlog
+
+- add push --delete
+  - note somewhat obscure original syntax
+
+- add ~ vs ^
+
+- adjust rebase to use --root and/or merge-base
+
+
 Everyday Git
 
 - git status
@@ -28,10 +53,6 @@ Everyday Git
 
   - git stash drop
 
-- git merge --no-commit
-
-  - try out the merge before committing it to history
-
 - git <some_command> -p
 
   - git add -p
@@ -41,12 +62,6 @@ Everyday Git
   - git stash -p
 
   - git reset -p
-
-- git push -u
-
-- git branch <some_name>
-
-  - set aside a "copy" of a branch while you do something destructive
 
 - git remote -v
 
