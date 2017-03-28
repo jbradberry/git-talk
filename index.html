@@ -182,6 +182,127 @@ Fast-forward
         </section>
 
         <section>
+          <section>
+            <p>git log</p>
+
+            <aside class="notes">
+              <ul>
+                <li>the log command can do so much more than we normally use it for</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ git log --author="Tobias McNulty"
+            </code></pre>
+
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+<mark>commit 50a757d8c8acd8af110e20f6e0a65eaec98f4fdf</mark>
+Author: Tobias McNulty <tobias@caktusgroup.com>
+Date:   Mon Mar 20 12:15:44 2017 -0400
+
+    some minor display enhancements for editing site modes via the admin
+
+<mark>commit f350eb381916b9c5ef1a4308872d87568e1ea3ac</mark>
+Merge: b85cfa2 9cba71b
+Author: Tobias McNulty <tobias@caktusgroup.com>
+Date:   Mon Mar 20 10:59:47 2017 -0400
+
+    Merge pull request #227 from caktus/server-downsize-march-2017
+    
+    Server downsize  -- March 2017
+            </code></pre>
+
+            <aside class="notes">
+              <ul>
+                <li>with the author flag, we can filter by the commit author</li>
+                <li>this uses a string match, so we can use a username, for example</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ git log --since=2.weeks
+$ git log --after=2.weeks
+            </code></pre>
+
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ git log --until="2017-02-01"
+$ git log --before="2017-02-01"
+            </code></pre>
+
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ git log --author=tobias --after="2016-01-01" \
+          --before="2017-01-01"
+            </code></pre>
+
+            <aside class="notes">
+              <ul>
+                <li>the since or after flag</li>
+                <li>the until or before flag</li>
+                <li>these work with specific dates or relative</li>
+                <li>they can be combined with each other and with other filters</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ git log -p --follow -- opendebates/models.py
+            </code></pre>
+
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+<mark>commit 50a757d8c8acd8af110e20f6e0a65eaec98f4fdf</mark>
+Author: Tobias McNulty <tobias@caktusgroup.com>
+Date:   Mon Mar 20 12:15:44 2017 -0400
+
+    some minor display enhancements for editing site modes via the admin
+
+diff --git a/opendebates/models.py b/opendebates/models.py
+index 32b7479..5100c98 100644
+--- a/opendebates/models.py
++++ b/opendebates/models.py
+@@ -113,6 +113,9 @@ class SiteMode(CachingMixin, models.Model):
+ 
+     objects = CachingManager()
+ 
++    def __unicode__(self):
++        return u'/'.join([self.site.domain, self.prefix])
++
+ 
+ class Submission(models.Model):
+            </code></pre>            
+
+            <aside class="notes">
+              <ul>
+                <li>we can filter by file or path</li>
+                <li>the double-dash is needed to separate the file path from the flags</li>
+                <li>with the follow flag, it will even keep track of the file beyond renames</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ git log -S'def foobar():'
+            </code></pre>
+
+            <pre class="fragment"><code class="bash hljs" data-trim data-noescape>
+$ git log -G'helper.*function'
+            </code></pre>
+
+            <aside class="notes">
+              <ul>
+                <li>it is possible to search for commits that contain some string</li>
+                <li>we can even use regexps</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
           <h2>'git'ting into Trouble</h2>
 
           <p class="fragment">and back out again</p>
